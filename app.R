@@ -53,7 +53,7 @@ dashBody=dashboardBody(
     actionButton(inputId = "showh", label = "Show hidden text"),
     actionButton(inputId = "hideh", label = "Hide text"),
     br(),
-    hidden(tags$div(id="txt", style='color:blue;', list(helpText("This app shows stochastic simulation result for linkage disequiliburm using genotype
+    hidden(tags$div(id="txt", style='color:blue;', list(helpText("This app shows stochastic simulation results for linkage disequiliburm using genotype
                                                                  versus haplotype for crossbred population.Sample size input parameter shows sample size followed by method of computation,e.g.
                                                                  900Ha refers sample size of 900 using haplotype method."),hr())))),
   
@@ -261,7 +261,7 @@ server<- function(input,output){
     cols2 <- paste0("c(", paste0("input$col2", sort(input$select1), collapse = ", "), ")")
     # print(cols)
     cols2 <- eval(parse(text = cols2))
-    # print(cols)
+    
     
     # To prevent errors
     req(length(cols2) == length(input$select1))
@@ -290,10 +290,9 @@ server<- function(input,output){
   
   output$plot12 <- renderPlotly({
     cols2 <- paste0("c(", paste0("input$col2", sort(input$select1), collapse = ", "), ")")
-    # print(cols)
+   
     cols2 <- eval(parse(text = cols2))
-    # print(cols)
-    
+   
     # To prevent errors
     req(length(cols2) == length(input$select1))
     data11 <- reactive({
@@ -320,10 +319,9 @@ server<- function(input,output){
   
   output$plot2 <- renderPlotly({
     cols2 <- paste0("c(", paste0("input$col2", sort(input$select1), collapse = ", "), ")")
-    # print(cols)
+
     cols2 <- eval(parse(text = cols2))
-    # print(cols)
-    
+ 
     # To prevent errors
     req(length(cols2) == length(input$select1))
     data33 <- reactive({
@@ -399,9 +397,7 @@ data55 <- reactive({
   newdatmsdratio[(newdatmsdratio[,6]%in% input$dr)&(newdatmsdratio[,1]%in% input$select2),]
 })
 output$tableDTr <- DT::renderDataTable(datatable(reactive({
-  
-  #cols3 <- paste0("c(", paste0("input$col3", sort(input$select2), collapse = ", "), ")")
-  #cols3 <- eval(parse(text = cols3))
+ 
   
   # To prevent errors
   #req(length(cols3) == length(input$select2))
@@ -500,9 +496,6 @@ output$tableDT <- DT::renderDataTable(datatable(reactive({
  
     datmeansd[(datmeansd[,2]%in% input$p11)&(datmeansd[,1]%in% input$select)&(datmeansd[,6]%in% input$d11),c(1,2,4,5,6,8,9)]
   
-  #names( datmeansd)[1]<- 'sizemethod'
-  #names( datmeansd)[6]='Truer2value'
-  #datmeansd[(datmeansd[,2]%in% input$p11)&(datmeansd[,1]%in% input$select)&(datmeansd[,6]%in% input$d11),c(1,2,4,5,6,8,9)]
 
   
 })(),
