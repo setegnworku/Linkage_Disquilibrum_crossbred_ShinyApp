@@ -8,7 +8,7 @@ library(shinythemes)
 library(shinyjs)
 library(shinythemes)
 library(shinydashboard)
-#setwd("/home/user/Documents/Iowapaper/simulationforthepaper/Jackcomment/Rscripttosummarize")
+)
 
 dat<- read.table('dat.txt',h=T)
 library(tidyverse)
@@ -98,7 +98,7 @@ datbiassd[,6]<- factor(datbiassd[,6])
 
 
 
-## Decriptive summary for the paper ( mean bias for Haplotype)
+## Descriptive summary for the paper ( mean bias for Haplotype)
 Ha=datbiassd %>%filter(method=='Ha') %>%  dplyr::select(Bias)
 mean(abs(Ha[,1]))
 max(abs(Ha[,1]))
@@ -121,11 +121,5 @@ Ge2000=datbiassd %>%filter(method=='Ge',NCD==2700) %>% dplyr:: select(Bias)
 mean(abs(Ge2000[,1]))
 sd((Ge2000[,1]))
 
-##################### Bias with 250 sample size
-
-#write.table(datbiassd,'biassdms.txt',row.names=F,col.names=T,quote=F)
-#######################
-##### 
-#write.table(newdatmsdratio,'sdratio.txt',row.names=F,col.names=T,quote=F)
 
 
